@@ -1,4 +1,25 @@
 <section class="container centered">
+  <div class="home-container">
+    <h1>Welcome</h1>
+    <p>
+      I'm a full-stack software engineer with an affinity for server-side development and an increasing focus on performance optimization and database design. My engineering journey is driven by my insatiable curiosity and my commitment to creating meaningful, impactful solutions.
+    </p>
+    <p>
+      Beyond my professional life, I find balance through exercising, immersing myself in films, and enjoying a diverse range of music genres. Life, like code, is all about finding the right balance.
+    </p>
+  </div>
+
+  <style>
+    .home-container {
+      max-width: 900px;
+      margin: 4em auto;
+      padding: 2em;
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+  </style>
+
   <div class="about">
     {{ partialCached "home/avatar.html" . }}
 
