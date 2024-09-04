@@ -13,6 +13,7 @@
           <p class="text-lg leading-relaxed">
             {{ $about := .Site.Params.about }}
             {{ $about := replace $about "who look like me" "<span class='who-look-like-me'>who look like me</span>" }}
+            {{ $about := replace $about "as I did as a child" "<a href='/blog/posts/from-linkedin/' class='blog-link'>as I did as a child</a>" }}
             {{ $about | safeHTML }}
           </p>
         </div>
