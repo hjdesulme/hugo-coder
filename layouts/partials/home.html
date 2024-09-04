@@ -7,12 +7,65 @@
     </header>
 
     <div id="content-container">
-      <section id="about" class="section-content">
+      <section id="about" class="section-content relative">
         <h2 class="text-2xl font-bold mb-4">About Me</h2>
-        <p class="text-lg leading-relaxed">
-          {{ .Site.Params.about }}
-        </p>
+        <div class="about-content">
+          <p class="text-lg leading-relaxed">
+            {{ $about := .Site.Params.about }}
+            {{ $about := replace $about "who look like me" "<span class='who-look-like-me'>who look like me</span>" }}
+            {{ $about | safeHTML }}
+          </p>
+        </div>
+        <div id="wllm-container" class="hidden absolute z-10">
+          <img id="wllm-image" src="/images/forWLLM.jpg" alt="Who look like me" class="w-full h-full object-cover">
+        </div>
       </section>
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const whoLookLikeMe = document.querySelector('.who-look-like-me');
+  const wllmContainer = document.querySelector('#wllm-container');
+  const aboutContent = document.querySelector('.about-content');
+  const sectionContent = document.querySelector('.section-content');
+
+  if (whoLookLikeMe && wllmContainer && aboutContent && sectionContent) {
+    let timeoutId;
+
+    whoLookLikeMe.addEventListener('mouseenter', function() {
+      clearTimeout(timeoutId);
+      aboutContent.style.opacity = '0';
+      wllmContainer.classList.remove('hidden');
+      wllmContainer.classList.add('show');
+      sectionContent.classList.add('show-image');
+    });
+
+    whoLookLikeMe.addEventListener('mouseleave', function() {
+      timeoutId = setTimeout(() => {
+        if (!wllmContainer.matches(':hover')) {
+          hideImage();
+        }
+      }, 100);
+    });
+
+    wllmContainer.addEventListener('mouseenter', function() {
+      clearTimeout(timeoutId);
+    });
+
+    wllmContainer.addEventListener('mouseleave', function() {
+      hideImage();
+    });
+
+    function hideImage() {
+      aboutContent.style.opacity = '1';
+      wllmContainer.classList.add('hidden');
+      wllmContainer.classList.remove('show');
+      sectionContent.classList.remove('show-image');
+    }
+  } else {
+    console.error('One or more elements not found');
+  }
+});
+</script>
