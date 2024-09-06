@@ -5,6 +5,12 @@
   {{- end -}}
   {{- i18n (lower .Title) | default .Title | title }} · {{ .Site.Title -}}
 {{ end }}
+
 {{ define "content" }}
-  {{ partial "list.html" . }}
+<section class="container relative min-h-screen">
+  <canvas id="bml-traffic-model" class="absolute inset-0 w-full h-full opacity-20"></canvas>
+  <div class="relative z-10">
+    {{ partial "list.html" . }}
+  </div>
+</section>
 {{ end }}

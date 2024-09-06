@@ -120,6 +120,10 @@
   {{ end }}
 
   {{- partial "body/extensions" . -}}
+  {{ if and (eq .Section "blog") (eq .Kind "section") }}
+    <canvas id="bml-traffic-model" class="fixed inset-0 w-full h-full opacity-20 z-[-1]"></canvas>
+    <script src="/js/bml-traffic-model.js" defer></script>
+  {{ end }}
 </body>
 
 </html>
