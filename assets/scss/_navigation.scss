@@ -31,10 +31,11 @@
     margin-top: 0;
 
     @media only screen and (max-width: 768px) {
-      position: relative;
-      top: 2rem;
+      position: absolute;
+      top: 6rem;  // Adjust this value to position the menu below the header
       right: 0;
-      z-index: 5;
+      left: 0;
+      z-index: 1000;  // Increase z-index to ensure it's above other elements
       visibility: hidden;
       opacity: 0;
       padding: 0;
@@ -54,10 +55,13 @@
       @media only screen and (max-width: 768px) {
         float: none !important;
         text-align: center;
+        padding: 1rem 0;  // Add padding to increase clickable area
 
         a,
         span {
           line-height: 5rem;
+          width: 100%;  // Make the entire width clickable
+          display: block;  // Ensure the entire area is clickable
         }
       }
 
